@@ -32,16 +32,25 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoreModule.cs" />
-    <Compile Include="IBotModule.cs" />
+    <Compile Include="Modules\Download.cs" />
+    <Compile Include="Modules\Flood.cs" />
+    <Compile Include="Modules\SysInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Spindle\Spindle.csproj">
+      <Project>{0d3c727d-f694-44d2-afa5-9d9ea747a76b}</Project>
+      <Name>Spindle</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)Ananke\bin\$(ConfigurationName)\Modules\$(ProjectName).dll"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)Ananke\bin\$(ConfigurationName)\Modules\$(ProjectName).dll"
+copy /Y "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)Spindle\bin\$(ConfigurationName)\Modules\$(ProjectName).dll"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

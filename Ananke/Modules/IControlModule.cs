@@ -1,4 +1,4 @@
-﻿namespace Ananke {
+﻿namespace Ananke.Modules {
     public interface IControlModule {
         string Identifier { get; }
 

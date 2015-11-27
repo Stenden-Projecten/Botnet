@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using IRCLib;
 using IRCLib.Data;
-using Spindle.Modules;
 
 namespace Spindle {
     public class Bot {
@@ -10,6 +11,11 @@ namespace Spindle {
         private readonly Dictionary<string, IBotModule> _modules = new Dictionary<string, IBotModule>(); 
 
         public Bot(string host, string user) {
+            LoadModules();
+
+            //RegisterModule(new SysInfoModule());
+            //RegisterModule(new DownloadModule());
+
             _ircClient = new Client(host, new User(user));
 
             _ircClient.RawMessageSent += (sender, args) => Console.WriteLine(">> " + args.Message + "\n");
@@ -18,14 +24,27 @@ namespace Spindle {
             _ircClient.SetHandler("001", OnServerReady);
             _ircClient.SetHandler("PRIVMSG", OnMessageReceived);
 
-            RegisterModule(new SysInfoModule());
-            RegisterModule(new DownloadModule());
-
             _ircClient.Connect();
         }
 
         public void RegisterModule(IBotModule module) {
             _modules[module.Identifier] = module;
+        }
+
+        public void LoadModules() {
+            string[] files = Directory.GetFiles("Modules", "*.dll");
+            Type moduleType = typeof(IBotModule);
+
+            foreach(string file in files) {
+                Assembly assembly = Assembly.LoadFrom(file);
+                Type[] types = assembly.GetTypes();
+                foreach(Type type in types) {
+                    if (type.IsInterface || type.IsAbstract) continue;
+                    if (type.GetInterface(moduleType.FullName) == null) continue;
+
+                    RegisterModule((IBotModule)Activator.CreateInstance(type));
+                }
+            }
         }
 
         private void OnMessageReceived(Client client, Message message) {

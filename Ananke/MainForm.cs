@@ -25,6 +25,10 @@ namespace Ananke {
             }
         }
 
+        public void ConsoleLogLine(string text) {
+            ConsoleLog(text + Environment.NewLine);
+        }
+
         public void RegisterModule(IControlModule module) {
             _modules[module.Identifier] = module;
 
@@ -39,15 +43,19 @@ namespace Ananke {
 
                 _ircClient = new Client(dialog.Host, new User("admin"));
 
-                _ircClient.RawMessageSent += (o, args) => ConsoleLog(">> " + args.Message + "\n");
-                _ircClient.RawMessageReceived += (o, args) => ConsoleLog("<< " + args.Message + "\n");
+                _ircClient.Error += (o, args) => ConsoleLogLine(args.GetException().ToString());
+                _ircClient.RawMessageSent += (o, args) => ConsoleLogLine(">> " + args.Message);
+                _ircClient.RawMessageReceived += (o, args) => ConsoleLogLine("<< " + args.Message);
 
                 _ircClient.SetHandler("001", OnServerReady);
                 _ircClient.SetHandler("353", OnNamesReceived);
                 _ircClient.SetHandler("JOIN", OnUserJoin);
                 _ircClient.SetHandler("QUIT", OnUserQuit);
 
-                _ircClient.Connect();
+                if(!_ircClient.Connect()) {
+                    MessageBox.Show("Failed to connect");
+                    Application.Exit();
+                }
             } else {
                 Application.Exit();
             }
