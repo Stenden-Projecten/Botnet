@@ -2,6 +2,9 @@
 using Spindle;
 
 namespace CoreModule.Modules {
+    /// <summary>
+    ///     Module to get system information from a bot
+    /// </summary>
     public class SysInfo : IBotModule {
         public string Identifier => "SYSINFO";
 
