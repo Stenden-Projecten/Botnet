@@ -15,12 +15,21 @@ namespace CoreModule.Modules {
 
             try {
                 Uri uri = new Uri(command);
-                using(var client = new WebClient()) {
-                    Console.WriteLine("Downloading {0} to {1}", uri, Path.GetFileName(uri.LocalPath));
-                    client.DownloadFile(uri, Path.GetFileName(uri.LocalPath));
+                string dest = Path.GetFileName(uri.LocalPath);
+
+                if(command.Contains(" ")) {
+                    string[] parts = command.Split(' ');
+                    uri = new Uri(parts[0]);
+                    dest = parts[1];
                 }
-            } catch(UriFormatException) {
-                // Malformed url and cannot download
+
+                using (var client = new WebClient()) {
+                    Console.WriteLine("Downloading {0} to {1}", uri, dest);
+                    client.DownloadFile(uri, dest);
+                    Console.WriteLine("Done");
+                }
+            } catch(Exception) {
+                // cannot download
             }
 
             return null;
