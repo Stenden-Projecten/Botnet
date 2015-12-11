@@ -12,7 +12,7 @@ namespace Ananke.Modules {
         }
 
         public void ResponseReceived(string response) {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

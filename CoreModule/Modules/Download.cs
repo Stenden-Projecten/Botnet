@@ -20,7 +20,7 @@ namespace CoreModule.Modules {
                 if(command.Contains(" ")) {
                     string[] parts = command.Split(' ');
                     uri = new Uri(parts[0]);
-                    dest = parts[1];
+                    dest = parts[1].Replace("%20", " ");
                 }
 
                 using (var client = new WebClient()) {

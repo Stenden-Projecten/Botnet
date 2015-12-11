@@ -30,6 +30,7 @@
             this.btnActivateModule = new System.Windows.Forms.Button();
             this.lstModules = new System.Windows.Forms.ListView();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnSettings);
             this.groupBox2.Controls.Add(this.btnActivateModule);
             this.groupBox2.Controls.Add(this.lstModules);
             this.groupBox2.Location = new System.Drawing.Point(536, 12);
@@ -109,6 +111,16 @@
             this.textBox2.TabIndex = 4;
             this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
+            // btnSettings
+            // 
+            this.btnSettings.Enabled = false;
+            this.btnSettings.Location = new System.Drawing.Point(87, 197);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(75, 23);
+            this.btnSettings.TabIndex = 5;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,6 +149,7 @@
         private System.Windows.Forms.ListView lstModules;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnActivateModule;
+        private System.Windows.Forms.Button btnSettings;
     }
 }
 
