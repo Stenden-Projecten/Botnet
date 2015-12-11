@@ -53,7 +53,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(117, 48);
+            this.btnStop.Location = new System.Drawing.Point(148, 48);
             this.btnStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(75, 28);
@@ -76,7 +76,7 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(222, 48);
+            this.btnStart.Location = new System.Drawing.Point(231, 48);
             this.btnStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 28);
@@ -88,6 +88,7 @@
             // numPort
             // 
             this.numPort.Location = new System.Drawing.Point(256, 15);
+            this.numPort.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numPort.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -99,7 +100,7 @@
             0,
             0});
             this.numPort.Name = "numPort";
-            this.numPort.Size = new System.Drawing.Size(41, 20);
+            this.numPort.Size = new System.Drawing.Size(51, 20);
             this.numPort.TabIndex = 5;
             this.numPort.Value = new decimal(new int[] {
             80,
@@ -112,13 +113,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(308, 86);
+            this.ClientSize = new System.Drawing.Size(319, 86);
             this.Controls.Add(this.numPort);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.txtTarget);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FloodForm";
             this.Text = "FloodForm";

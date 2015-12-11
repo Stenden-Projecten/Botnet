@@ -7,7 +7,7 @@ using IRCLib.Data;
 
 namespace Spindle {
     public class Bot {
-        private Client _ircClient;
+        private readonly Client _ircClient;
         private readonly Dictionary<string, IBotModule> _modules = new Dictionary<string, IBotModule>(); 
 
         /// <summary>

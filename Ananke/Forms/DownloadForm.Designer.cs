@@ -96,6 +96,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUrl);
             this.Controls.Add(this.btnDownload);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "DownloadForm";
             this.Text = "DownloadForm";
             this.ResumeLayout(false);
